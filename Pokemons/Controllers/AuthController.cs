@@ -1,23 +1,19 @@
+using System.IO.Pipelines;
 using System.Text.Json;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using Pokemons.Respositories;
 
 namespace Pokemons.Controllers;
 
-[Route("api/[controller]")]
+[Microsoft.AspNetCore.Mvc.Route("api/[controller]")]
 [ApiController]
 public class Authorization : ControllerBase
 {
     [HttpPost("auth")]
-    public IResult Auth()
+    public IResult Auth([FromBody] JsonElement requestBody)
     {
-        Stream req = Request.Body;
-        Task<string> jsonText = new StreamReader(req).ReadToEndAsync();
-        jsonText.Wait();
-        if (jsonText.Result == "")
-            return Results.Problem("Json is empty", statusCode: 406);
-        
-        Dictionary<string, JsonElement>? json = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(jsonText.Result);
+        Dictionary<string, JsonElement>? json = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(requestBody);
         string? login = json?["login"].GetString();
         string? password = json?["password"].GetString();
         if (login != null && password != null)
@@ -27,7 +23,7 @@ public class Authorization : ControllerBase
                 return Results.Ok(jwtToken);
         }
 
-        return Results.Empty;
+        return Results.BadRequest("gdfgdfgf");
     }
     
 }

@@ -17,7 +17,7 @@ public class Pokemons : ControllerBase
     {
         int userId = Utils.GetUserIdByJwtTokenString(Request.Headers["Authorization"]!);
         PokemonsRep pokemonsRep = new PokemonsRep(userId);
-        return Results.Json(pokemonsRep.GetAllPokemons().GetRange(0, 20));
+        return Results.Json(pokemonsRep.GetAllPokemons());
     }
     
     [HttpGet("get_types_of_pokemon")]
@@ -38,20 +38,41 @@ public class Pokemons : ControllerBase
         return int.TryParse(id, out int numId) ? Results.Ok(pokemonsRep.Like(numId)) : Results.Problem();
     }
     
-    [HttpGet("get_most_liked_pockemon")]
+    [HttpPost("get_most_liked_pockemon")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public IResult LikePokemon()
+    public IResult GetLikePokemon([FromBody] JsonElement requestBody)
     {
-        Stream req = Request.Body;
-        Task<string> jsonText = new StreamReader(req).ReadToEndAsync();
-        jsonText.Wait();
-        if (jsonText.Result == "")
-            return Results.Problem("Json is empty", statusCode: 406);
-        
-        Dictionary<string, JsonElement>? json = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(jsonText.Result);
+        Dictionary<string, JsonElement>? json = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(requestBody);
         int userId = Utils.GetUserIdByJwtTokenString(Request.Headers["Authorization"]!);
         PokemonsRep pokemonsRep = new PokemonsRep(userId);
         return Results.Json(pokemonsRep.GetMostLikedPockemon(json["time"].GetString()));
+    }
+        
+    [HttpGet("get_stats")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public IResult GetStats()
+    {
+        int userId = Utils.GetUserIdByJwtTokenString(Request.Headers["Authorization"]!);
+        PokemonsRep pokemonsRep = new PokemonsRep(userId);
+        return Results.Json(pokemonsRep.GetStats());
+    }
+    
+    [HttpGet("get_abilities")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public IResult GetAbilities()
+    {
+        int userId = Utils.GetUserIdByJwtTokenString(Request.Headers["Authorization"]!);
+        PokemonsRep pokemonsRep = new PokemonsRep(userId);
+        return Results.Json(pokemonsRep.GetAbilities());
+    }
+    
+    [HttpGet("get_images")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public IResult GetAbilitie()
+    {
+        int userId = Utils.GetUserIdByJwtTokenString(Request.Headers["Authorization"]!);
+        PokemonsRep pokemonsRep = new PokemonsRep(userId);
+        return Results.Json(pokemonsRep.GetImages());
     }
     
 }

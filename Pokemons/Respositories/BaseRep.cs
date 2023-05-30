@@ -4,12 +4,12 @@ namespace Pokemons.Respositories;
 
 public class BaseRep
 {
-    public PokemonsContext Context;
+    public NeondbContext Context;
     public int UserId { get; }
 
     public BaseRep(int userId)
     {
-        Context = new PokemonsContext();
+        Context = new NeondbContext();
         UserId = userId;
     }
     

@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemons", "Pokemons\Pokemons.csproj", "{3D1844BA-91A3-49CA-985B-43B5EAF4238A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desktop", "Desktop\Desktop.csproj", "{16623A04-6403-4FEC-BDE6-DCA72001BEEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{3D1844BA-91A3-49CA-985B-43B5EAF4238A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D1844BA-91A3-49CA-985B-43B5EAF4238A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D1844BA-91A3-49CA-985B-43B5EAF4238A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16623A04-6403-4FEC-BDE6-DCA72001BEEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16623A04-6403-4FEC-BDE6-DCA72001BEEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16623A04-6403-4FEC-BDE6-DCA72001BEEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16623A04-6403-4FEC-BDE6-DCA72001BEEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

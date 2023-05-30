@@ -1,4 +1,4 @@
-using System.Runtime.InteropServices.JavaScript;
+using System.Diagnostics.CodeAnalysis;
 using Pokemons.Models;
 using Pokemons.Respositories.Common;
 using PokemonsModel = Pokemons.Models.Pockemon;
@@ -21,7 +21,6 @@ public class PokemonsRep: BaseRep
                 Gender = Context.Genderts.FirstOrDefault(x => x.Idgender == pockemon.Idgender)?.Gender!,
                 Generation = pockemon.Generation,
                 Growtht = Context.Growthts.FirstOrDefault(x => x.Idgrowth == pockemon.Idgrowth)?.Typegrowth!,
-                Image = Context.Imagepokemons.FirstOrDefault(x => x.Idpokemon == pockemon.Idpockemon)?.Image!
             };
             result.Add(pokemonJ);
         }
@@ -92,9 +91,36 @@ public class PokemonsRep: BaseRep
             Gender = Context.Genderts.FirstOrDefault(x => x.Idgender == pokemonDb.Idgender)?.Gender!,
             Generation = pokemonDb.Generation,
             Growtht = Context.Growthts.FirstOrDefault(x => x.Idgrowth == pokemonDb.Idgrowth)?.Typegrowth!,
-            Image = Context.Imagepokemons.FirstOrDefault(x => x.Idpokemon == pokemonDb.Idpockemon)?.Image!
         };
         return result;
         
+    }
+
+    [SuppressMessage("ReSharper.DPA", "DPA0007: Large number of DB records", MessageId = "count: 1008")]
+    public List<StatJsonStruct> GetStats()
+    {
+        return Context.Stats.Select(stat => new StatJsonStruct()
+            {
+                Attack = stat.Attack,
+                ChanceCatch = stat.Chancecatch,
+                Height = stat.Heights,
+                EggCycle = stat.Eggcycle,
+                Experients = stat.Expirients,
+                Health = stat.Health,
+                Protect = stat.Protect,
+                Speed = stat.Speed,
+                Weight = stat.Weights
+            })
+            .ToList();
+    }
+
+    public List<string> GetAbilities()
+    {
+        return Context.Abilities.Select(x => x.Ability1).ToList();
+    }
+    
+    public List<byte[]> GetImages()
+    {
+        return Context.Imagepokemons.Select(x => x.Image!).ToList();
     }
 }
