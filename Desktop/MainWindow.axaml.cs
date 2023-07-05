@@ -23,7 +23,8 @@ public partial class MainWindow : Window
         };
         var response = await ClientToApi.Api.Client.PostAsJsonAsync("Authorization/auth", json);
         ClientToApi.Jwt = await response.Content.ReadAsStringAsync();
-
+        string token = await response.Content.ReadAsStringAsync();
+        
         if (response.StatusCode == HttpStatusCode.OK && ClientToApi.Jwt != "")
         {
             PokemonsWindow pokemonsWindow = new PokemonsWindow();

@@ -8,12 +8,6 @@ public class PokemonJsonStruct
     public int Generation { get; set; }
 }
 
-public class PokemonsAbilityJsonStruct
-{
-    public string Name { get; set; }
-    public string Ability { get; set; }
-}
-
 public class StatJsonStruct
 {
     public decimal Height { get; set; }
@@ -25,6 +19,12 @@ public class StatJsonStruct
     public int Attack { get; set; }
     public int Protect { get; set; }
     public int Speed { get; set; }
+}
+
+public class PokemonsAbilityJsonStruct
+{
+    public string Name { get; set; }
+    public string Ability { get; set; }
 }
 
 public class PokemonTypeJsonStruct

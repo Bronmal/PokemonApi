@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "P1/16EpSqYslXDkHLJfTvbFLAT/DUu/fWVIwzYXhQVU5nqRffmzND7+ZSCODW0sbf//nd1jcIvdkplJbHx25nA==",
+  "dgSpecHash": "40s4Ia3R9JDwHRoxa9HiIkFS+MytxpW3Bb3Gu43Ju5vExELHqWhksNeYkZlS91sI9geXA0UyVgNNMJ0WRJRHeA==",
   "success": true,
-  "projectFilePath": "D:\\programming\\Pokemons\\Pokemons\\Pokemons.csproj",
+  "projectFilePath": "D:\\programming\\PokemonApi\\Pokemons\\Pokemons.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tri20\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\tri20\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.15\\microsoft.aspnetcore.authentication.jwtbearer.6.0.15.nupkg.sha512",

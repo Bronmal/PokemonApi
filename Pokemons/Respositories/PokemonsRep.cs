@@ -119,8 +119,10 @@ public class PokemonsRep: BaseRep
         return Context.Abilities.Select(x => x.Ability1).ToList();
     }
     
-    public List<byte[]> GetImages()
+    public byte[] GetImages(string id)
     {
-        return Context.Imagepokemons.Select(x => x.Image!).ToList();
+        var pokemons = Context.Pockemons.ToList();
+        var pokemonId = pokemons.First(x => x.Namepockemon == id).Idpockemon;
+        return Context.Imagepokemons.First(x => x.Idpokemon == pokemonId).Image;
     }
 }

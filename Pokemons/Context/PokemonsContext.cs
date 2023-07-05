@@ -50,6 +50,7 @@ public partial class PokemonsContext : DbContext
 
             entity.Property(e => e.Idabilitys).HasColumnName("idabilitys");
             entity.Property(e => e.Ability1)
+                .IsRequired()
                 .HasMaxLength(30)
                 .HasColumnName("ability");
 
@@ -81,6 +82,7 @@ public partial class PokemonsContext : DbContext
 
             entity.Property(e => e.Idgroup).HasColumnName("idgroup");
             entity.Property(e => e.Egggroup1)
+                .IsRequired()
                 .HasMaxLength(30)
                 .HasColumnName("egggroup");
 
@@ -112,6 +114,7 @@ public partial class PokemonsContext : DbContext
 
             entity.Property(e => e.Idgender).HasColumnName("idgender");
             entity.Property(e => e.Gender)
+                .IsRequired()
                 .HasMaxLength(30)
                 .HasColumnName("gender");
         });
@@ -124,6 +127,7 @@ public partial class PokemonsContext : DbContext
 
             entity.Property(e => e.Idgrowth).HasColumnName("idgrowth");
             entity.Property(e => e.Typegrowth)
+                .IsRequired()
                 .HasMaxLength(30)
                 .HasColumnName("typegrowth");
         });
@@ -180,6 +184,7 @@ public partial class PokemonsContext : DbContext
             entity.Property(e => e.Idstatspockemon).HasColumnName("idstatspockemon");
             entity.Property(e => e.Image).HasColumnName("image");
             entity.Property(e => e.Namepockemon)
+                .IsRequired()
                 .HasMaxLength(30)
                 .HasColumnName("namepockemon");
 
@@ -204,6 +209,7 @@ public partial class PokemonsContext : DbContext
 
             entity.Property(e => e.Idtype).HasColumnName("idtype");
             entity.Property(e => e.Typename)
+                .IsRequired()
                 .HasMaxLength(30)
                 .HasColumnName("typename");
 
@@ -257,12 +263,15 @@ public partial class PokemonsContext : DbContext
 
             entity.Property(e => e.Iduser).HasColumnName("iduser");
             entity.Property(e => e.Login)
+                .IsRequired()
                 .HasMaxLength(30)
                 .HasColumnName("login");
             entity.Property(e => e.Nameuser)
+                .IsRequired()
                 .HasMaxLength(30)
                 .HasColumnName("nameuser");
             entity.Property(e => e.Password)
+                .IsRequired()
                 .HasMaxLength(30)
                 .HasColumnName("password");
         });

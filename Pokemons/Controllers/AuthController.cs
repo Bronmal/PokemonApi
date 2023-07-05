@@ -11,7 +11,7 @@ namespace Pokemons.Controllers;
 public class Authorization : ControllerBase
 {
     [HttpPost("auth")]
-    public IResult Auth([FromBody] JsonElement requestBody)
+    public IActionResult Auth([FromBody] JsonElement requestBody)
     {
         Dictionary<string, JsonElement>? json = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(requestBody);
         string? login = json?["login"].GetString();
@@ -20,10 +20,10 @@ public class Authorization : ControllerBase
         {
             AuthRep authRep = new AuthRep(0);
             if (authRep.Auth(login, password, out var jwtToken))
-                return Results.Ok(jwtToken);
+                return Ok(jwtToken);
         }
 
-        return Results.BadRequest("gdfgdfgf");
+        return BadRequest();
     }
     
 }

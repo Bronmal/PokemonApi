@@ -2,8 +2,74 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:Desktop"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Desktop.PokemonsWindow"
         Title="PokemonsWindow">
-    Welcome to Avalonia!
+ 
+<Design.DataContext>
+<vm:PokemonsWindow />
+</Design.DataContext>
+        
+        <TabControl>
+                <TabItem
+                        Header="Покемоны">
+                        <DataGrid Name="PokemonsGrid">
+                                <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Name"  Binding="{Binding Name}"/>
+                                        <DataGridTextColumn Header="Growtht" Binding="{Binding Growtht}"/>
+                                        <DataGridTextColumn Header="Gender"  Binding="{Binding Gender}"/>
+                                        <DataGridTextColumn Header="Generation" Binding="{Binding Generation}"/>
+                                        <DataGridTemplateColumn>
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                                <StackPanel Orientation="Horizontal">
+                                                                        <Button Content="Нажми меня" Click="Button_Click"/>
+                                                                </StackPanel>
+                                                        </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                        </DataGrid>
+                </TabItem>
+                <TabItem
+                        Header="Типы покемонов"
+                        Tapped="OnTappedTypes">
+                        <DataGrid Name="PokemonsTypeGrid">
+                                <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Name"  Binding="{Binding Name}"/>
+                                </DataGrid.Columns>
+                        </DataGrid>
+                </TabItem>
+                <TabItem
+                        Header="Параметры покемонов"
+                        Tapped="OnTappedParametrs">
+                        <DataGrid Name="PokemonsParametrsGrid">
+                                <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Height"  Binding="{Binding Height}"/>
+                                        <DataGridTextColumn Header="Weight"  Binding="{Binding Weight}"/>
+                                        <DataGridTextColumn Header="EggCycle"  Binding="{Binding EggCycle}"/>
+                                        <DataGridTextColumn Header="ChanceCatch"  Binding="{Binding ChanceCatch}"/>
+                                        <DataGridTextColumn Header="Experients"  Binding="{Binding Experients}"/>
+                                        <DataGridTextColumn Header="Health"  Binding="{Binding Health}"/>
+                                        <DataGridTextColumn Header="Attack"  Binding="{Binding Attack}"/>
+                                        <DataGridTextColumn Header="Protect"  Binding="{Binding Protect}"/>
+                                        <DataGridTextColumn Header="Speed"  Binding="{Binding Speed}"/>
+                                </DataGrid.Columns>
+                        </DataGrid>
+                </TabItem>
+                <TabItem
+                        Header="Характеристики покемонов"
+                        Tapped="OnTappedAbilities">
+                        <DataGrid Name="PokemonsAbilityGrid">
+                                <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Name"  Binding="{Binding}"/>
+                                </DataGrid.Columns>
+                        </DataGrid>
+                </TabItem>
+                <TabItem
+                        Header="Покемоны по дням">
+                        
+                </TabItem>
+        </TabControl>
 </Window>
