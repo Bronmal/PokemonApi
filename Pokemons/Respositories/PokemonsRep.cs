@@ -17,6 +17,7 @@ public class PokemonsRep: BaseRep
         {
             PokemonJsonStruct pokemonJ = new PokemonJsonStruct()
             {
+                Id = pockemon.Idpockemon.ToString(),
                 Name = pockemon.Namepockemon,
                 Gender = Context.Genderts.FirstOrDefault(x => x.Idgender == pockemon.Idgender)?.Gender!,
                 Generation = pockemon.Generation,
@@ -68,6 +69,7 @@ public class PokemonsRep: BaseRep
                 day = Context.Likepikemons.Where(x => x.Datelike == DateOnly.FromDateTime(DateTime.Now)).ToList();
                 a = day.GroupBy(x => x.Idpockemon).OrderBy(x => x.ToList().Count).Select(x => x.Select(y => y))
                     .ToList();
+                if (a.Count == 0) {idPokemon = -1; break;}
                 idPokemon = a[^1].ToList()[0].Idpockemon;
                 break;
             case "month":
@@ -84,6 +86,8 @@ public class PokemonsRep: BaseRep
                 break;
         }
 
+        if (idPokemon == -1) return null;
+        
         Pockemon pokemonDb = Context.Pockemons.FirstOrDefault(x => x.Idpockemon == idPokemon)!;
         PokemonJsonStruct result = new PokemonJsonStruct()
         {

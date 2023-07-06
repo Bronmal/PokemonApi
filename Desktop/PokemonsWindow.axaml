@@ -14,23 +14,37 @@
         <TabControl>
                 <TabItem
                         Header="Покемоны">
-                        <DataGrid Name="PokemonsGrid">
-                                <DataGrid.Columns>
-                                        <DataGridTextColumn Header="Name"  Binding="{Binding Name}"/>
-                                        <DataGridTextColumn Header="Growtht" Binding="{Binding Growtht}"/>
-                                        <DataGridTextColumn Header="Gender"  Binding="{Binding Gender}"/>
-                                        <DataGridTextColumn Header="Generation" Binding="{Binding Generation}"/>
-                                        <DataGridTemplateColumn>
-                                                <DataGridTemplateColumn.CellTemplate>
-                                                        <DataTemplate>
-                                                                <StackPanel Orientation="Horizontal">
-                                                                        <Button Content="Нажми меня" Click="Button_Click"/>
-                                                                </StackPanel>
-                                                        </DataTemplate>
-                                                </DataGridTemplateColumn.CellTemplate>
-                                        </DataGridTemplateColumn>
-                                </DataGrid.Columns>
-                        </DataGrid>
+                        <StackPanel>
+                                <Button
+                                        Click="Button_OnClick" Content="Получить покена дня"
+                                        HorizontalAlignment="Right"></Button>
+                                <DataGrid Name="PokemonsGrid">
+                                        <DataGrid.Columns>
+                                                <DataGridTextColumn Header="Name"  Binding="{Binding Name}"/>
+                                                <DataGridTextColumn Header="Growtht" Binding="{Binding Growtht}"/>
+                                                <DataGridTextColumn Header="Gender"  Binding="{Binding Gender}"/>
+                                                <DataGridTextColumn Header="Generation" Binding="{Binding Generation}"/>
+                                                <DataGridTemplateColumn>
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                        <StackPanel Orientation="Horizontal">
+                                                                                <Button Content="Нажми меня" Click="Button_Click"/>
+                                                                        </StackPanel>
+                                                                </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                </DataGridTemplateColumn>
+                                                <DataGridTemplateColumn>
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                        <StackPanel Orientation="Horizontal">
+                                                                                <Button Content="Нажми меня" Click="Button_OnClick1"/>
+                                                                        </StackPanel>
+                                                                </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                </DataGridTemplateColumn>
+                                        </DataGrid.Columns>
+                                </DataGrid> 
+                        </StackPanel>
                 </TabItem>
                 <TabItem
                         Header="Типы покемонов"
@@ -58,18 +72,14 @@
                                 </DataGrid.Columns>
                         </DataGrid>
                 </TabItem>
-                <TabItem
-                        Header="Характеристики покемонов"
-                        Tapped="OnTappedAbilities">
-                        <DataGrid Name="PokemonsAbilityGrid">
-                                <DataGrid.Columns>
-                                        <DataGridTextColumn Header="Name"  Binding="{Binding}"/>
-                                </DataGrid.Columns>
-                        </DataGrid>
-                </TabItem>
-                <TabItem
-                        Header="Покемоны по дням">
-                        
-                </TabItem>
+                <!-- <TabItem -->
+                <!--         Header="Характеристики покемонов" -->
+                <!--         Tapped="OnTappedAbilities"> -->
+                <!--         <DataGrid Name="PokemonsAbilityGrid"> -->
+                <!--                 <DataGrid.Columns> -->
+                <!--                         <DataGridTextColumn Header="Name"  Binding="{Binding}"/> -->
+                <!--                 </DataGrid.Columns> -->
+                <!--         </DataGrid> -->
+                <!-- </TabItem> -->
         </TabControl>
 </Window>

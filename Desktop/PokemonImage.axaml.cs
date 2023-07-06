@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
@@ -9,13 +12,15 @@ public partial class PokemonImage : Window
     public PokemonImage()
     {
         InitializeComponent();
-#if DEBUG
-        this.AttachDevTools();
-#endif
     }
-
-    private void InitializeComponent()
+    
+    public PokemonImage(byte[] imageBytes)
     {
-        AvaloniaXamlLoader.Load(this);
+        InitializeComponent();
+        var array = imageBytes.ToArray();
+        Stream stream = new MemoryStream(array);
+        var image = new Avalonia.Media.Imaging.Bitmap(stream);
+
+        pokemonImage.Source = image;
     }
 }

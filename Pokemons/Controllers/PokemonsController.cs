@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Pokemons.Controllers.Common;
 using Pokemons.Respositories;
+using Pokemons.Respositories.Common;
 
 namespace Pokemons.Controllers;
 
@@ -46,7 +47,9 @@ public class Pokemons : ControllerBase
         Dictionary<string, JsonElement>? json = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(requestBody);
         int userId = Utils.GetUserIdByJwtTokenString(Request.Headers["Authorization"]!);
         PokemonsRep pokemonsRep = new PokemonsRep(userId);
-        return Ok(JsonSerializer.Serialize(pokemonsRep.GetMostLikedPockemon(json["time"].GetString())));
+        PokemonJsonStruct pockemon = pokemonsRep.GetMostLikedPockemon(json["time"].GetString());
+        if (pockemon is null) return Ok("Ни один покемон еще не лайкнут");
+        return Ok(JsonSerializer.Serialize(pockemon));
     }
         
     [HttpGet("get_stats")]

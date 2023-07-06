@@ -5,25 +5,48 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Desktop.MainWindow"
         Title="Desktop">
-    <Grid ColumnDefinitions="*,*,*"
-          RowDefinitions="*,*,*"
-          ShowGridLines="True">
+    
+    <StackPanel
+        Width="500"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center">
         
-        <TextBox Grid.Row="1" Grid.Column="1"
-                 MaxHeight="10"
-                 Name="LoginBox"
-                 VerticalAlignment="Top"></TextBox>
+        <Label 
+            Content="Login"
+            HorizontalAlignment="Center"></Label>
+
+        <StackPanel Height="15"></StackPanel>
         
-        <TextBox Grid.Row="1" Grid.Column="1"
-                 MaxHeight="10"
-                 Name="PasswordBox"
-                 PasswordChar="+"></TextBox>
+        <TextBox
+                     MaxHeight="10"
+                     Width="200"
+                     Name="LoginBox"
+                     VerticalAlignment="Top"></TextBox>
         
-        <Button Grid.Row="1" Grid.Column="1"
-                  MinHeight="15"
-                  Name="AuthButton"
-                  VerticalAlignment="Bottom"
-                  HorizontalAlignment="Stretch"
-                  Click="AuthButton_OnClick"></Button>
-    </Grid>
+        <StackPanel Height="20"></StackPanel>
+        
+        <Label 
+            Content="Password"
+            HorizontalAlignment="Center"></Label>
+
+        <StackPanel Height="15"></StackPanel>
+            
+            <TextBox
+                     MaxHeight="10"
+                     Name="PasswordBox"
+                     Width="200"
+                     PasswordChar="+"></TextBox>
+        
+        <StackPanel Height="20"></StackPanel>
+            
+            <Button
+                      MinHeight="15"
+                      Name="AuthButton"
+                      VerticalAlignment="Bottom"
+                      HorizontalAlignment="Stretch"
+                      Width="150"
+                      Height="25"
+                      Content="Войти"
+                      Click="AuthButton_OnClick"></Button>
+    </StackPanel>
 </Window>
