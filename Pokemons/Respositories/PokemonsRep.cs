@@ -103,8 +103,14 @@ public class PokemonsRep: BaseRep
     [SuppressMessage("ReSharper.DPA", "DPA0007: Large number of DB records", MessageId = "count: 1008")]
     public List<StatJsonStruct> GetStats()
     {
-        return Context.Stats.Select(stat => new StatJsonStruct()
+        var pokemons = Context.Pockemons.ToList();
+        var list = new List<StatJsonStruct>();
+        foreach (var pokemon in pokemons)
+        {
+           var stat = Context.Stats.First(x => x.Idstats == pokemon.Idstatspockemon);
+            list.Add(new StatJsonStruct()
             {
+                Name = pokemon.Namepockemon,
                 Attack = stat.Attack,
                 ChanceCatch = stat.Chancecatch,
                 Height = stat.Heights,
@@ -114,8 +120,10 @@ public class PokemonsRep: BaseRep
                 Protect = stat.Protect,
                 Speed = stat.Speed,
                 Weight = stat.Weights
-            })
-            .ToList();
+            });
+        }
+
+        return list;
     }
 
     public List<string> GetAbilities()

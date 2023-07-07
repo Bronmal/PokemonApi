@@ -96,7 +96,9 @@ public partial class PokemonsWindow : Window
         a["name"] = (string)rowData.Name;
         var response = await ClientToApi.Api.Client.PostAsJsonAsync("Pokemons/get_image", a);
         var json = await response.Content.ReadAsStringAsync();
-        byte[] imageBytes = Encoding.ASCII.GetBytes(json);
+
+        byte[] imageBytes =  JsonSerializer.Deserialize<byte[]>(json);
         PokemonImage b = new PokemonImage(imageBytes);
+        b.Show();
     }
 }

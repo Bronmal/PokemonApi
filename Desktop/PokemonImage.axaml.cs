@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using Avalonia.Media.Imaging;
+using SkiaSharp;
 
 namespace Desktop;
 
@@ -17,10 +20,9 @@ public partial class PokemonImage : Window
     public PokemonImage(byte[] imageBytes)
     {
         InitializeComponent();
-        var array = imageBytes.ToArray();
-        Stream stream = new MemoryStream(array);
-        var image = new Avalonia.Media.Imaging.Bitmap(stream);
+        MemoryStream stream = new MemoryStream(imageBytes);
+        Bitmap bitmap = new Bitmap(stream);
 
-        pokemonImage.Source = image;
+        DataContext = bitmap;
     }
 }

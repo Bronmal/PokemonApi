@@ -11,6 +11,7 @@ public class PokemonJsonStruct
 
 public class StatJsonStruct
 {
+    public string Name { get; set; }
     public decimal Height { get; set; }
     public decimal Weight { get; set; }
     public int? EggCycle { get; set; }

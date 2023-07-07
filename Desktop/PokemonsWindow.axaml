@@ -18,17 +18,17 @@
                                 <Button
                                         Click="Button_OnClick" Content="Получить покена дня"
                                         HorizontalAlignment="Right"></Button>
-                                <DataGrid Name="PokemonsGrid">
+                                <DataGrid Name="PokemonsGrid" IsReadOnly="True">
                                         <DataGrid.Columns>
                                                 <DataGridTextColumn Header="Name"  Binding="{Binding Name}"/>
                                                 <DataGridTextColumn Header="Growtht" Binding="{Binding Growtht}"/>
                                                 <DataGridTextColumn Header="Gender"  Binding="{Binding Gender}"/>
                                                 <DataGridTextColumn Header="Generation" Binding="{Binding Generation}"/>
-                                                <DataGridTemplateColumn>
+                                                <DataGridTemplateColumn Header="">
                                                         <DataGridTemplateColumn.CellTemplate>
                                                                 <DataTemplate>
                                                                         <StackPanel Orientation="Horizontal">
-                                                                                <Button Content="Нажми меня" Click="Button_Click"/>
+                                                                                <Button Content="лайкнуть" Click="Button_Click"/>
                                                                         </StackPanel>
                                                                 </DataTemplate>
                                                         </DataGridTemplateColumn.CellTemplate>
@@ -37,7 +37,7 @@
                                                         <DataGridTemplateColumn.CellTemplate>
                                                                 <DataTemplate>
                                                                         <StackPanel Orientation="Horizontal">
-                                                                                <Button Content="Нажми меня" Click="Button_OnClick1"/>
+                                                                                <Button Content="картинка" Click="Button_OnClick1"/>
                                                                         </StackPanel>
                                                                 </DataTemplate>
                                                         </DataGridTemplateColumn.CellTemplate>
@@ -49,7 +49,7 @@
                 <TabItem
                         Header="Типы покемонов"
                         Tapped="OnTappedTypes">
-                        <DataGrid Name="PokemonsTypeGrid">
+                        <DataGrid Name="PokemonsTypeGrid" IsReadOnly="True">
                                 <DataGrid.Columns>
                                         <DataGridTextColumn Header="Name"  Binding="{Binding Name}"/>
                                 </DataGrid.Columns>
@@ -58,8 +58,9 @@
                 <TabItem
                         Header="Параметры покемонов"
                         Tapped="OnTappedParametrs">
-                        <DataGrid Name="PokemonsParametrsGrid">
+                        <DataGrid Name="PokemonsParametrsGrid" IsReadOnly="True">
                                 <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Name"  Binding="{Binding Name}"/>
                                         <DataGridTextColumn Header="Height"  Binding="{Binding Height}"/>
                                         <DataGridTextColumn Header="Weight"  Binding="{Binding Weight}"/>
                                         <DataGridTextColumn Header="EggCycle"  Binding="{Binding EggCycle}"/>
